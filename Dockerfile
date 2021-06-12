@@ -9,6 +9,8 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 COPY ./drupal.sh /home/root
+RUN rm -rf /var/www/html
+RUN ln -s /var/www/web /var/www/html
 WORKDIR /
 CMD /bin/bash
 #CMD ["apache2-foreground"]
