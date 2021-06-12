@@ -1,5 +1,5 @@
 FROM php:7.1-apache
-WORKDIR /tmp
+WORKDIR /home/root
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
 RUN apt-get -y -qq install software-properties-common dialog apt-utils
@@ -8,5 +8,7 @@ RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
+COPY ./drupal.sh /home/root
 WORKDIR /
 CMD /bin/bash
+#CMD ["apache2-foreground"]
