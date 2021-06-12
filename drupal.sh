@@ -1,3 +1,5 @@
 #!/bin/bash
-echo "Installing drupal..."
-apache2-foreground
+cd /var/www
+php -d memory_limit=-1 /usr/local/bin/composer install
+
+
