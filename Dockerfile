@@ -3,6 +3,13 @@ WORKDIR /home/root
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
 RUN apt-get -y -qq install software-properties-common dialog apt-utils
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+    && docker-php-ext-configure gd\
+    && docker-php-ext-install -j$(nproc) gd
+
 RUN apt-get -y -qq install git
 RUN apt-get install zip unzip
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
