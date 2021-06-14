@@ -15,5 +15,4 @@ COPY ./drupal.sh /home/root
 RUN rm -rf /var/www/html
 RUN ln -s /var/www/web /var/www/html
 WORKDIR /
-CMD /bin/bash
-#CMD ["apache2-foreground"]
+CMD ["apache2-foreground"]
