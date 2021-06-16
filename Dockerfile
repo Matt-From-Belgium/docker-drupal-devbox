@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
     && docker-php-ext-configure gd\
     && docker-php-ext-install -j$(nproc) gd
-
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN apt-get -y -qq install git
 RUN apt-get install zip unzip
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
