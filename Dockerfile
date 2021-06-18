@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd\
     && docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN pecl install redis-5.1.1 \
+    && pecl install xdebug-3.0.4 \
+    && docker-php-ext-enable redis xdebug
 RUN apt-get -y -qq install git default-mysql-client
 RUN apt-get install zip unzip
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
