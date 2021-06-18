@@ -18,8 +18,7 @@ RUN echo "xdebug.mode=debug" >> /usr/local/etc/php/php.ini
 RUN echo "xdebug.client_host=172.17.0.1" >> /usr/local/etc/php/php.ini
 RUN echo "xdebug.client_port=9003" >> /usr/local/etc/php/php.ini
 RUN echo 'xdebug.idekey="netbeans-xdebug"' >> /usr/local/etc/php/php.ini
-RUN apt-get -y -qq install git default-mysql-client
-RUN apt-get install zip unzip
+RUN apt-get -y -qq install git default-mysql-client zip unzip wait-for-it
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 RUN php composer-setup.php
