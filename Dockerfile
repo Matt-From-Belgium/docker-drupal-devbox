@@ -2,7 +2,7 @@ FROM php:7.4-apache
 WORKDIR /home/root
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
-RUN apt-get -y -qq install software-properties-common dialog apt-utils
+RUN apt-get -y -qq install apt-utils software-properties-common dialog 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \

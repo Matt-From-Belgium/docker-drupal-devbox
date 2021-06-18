@@ -9,5 +9,7 @@ echo "alias drupal='/var/www/vendor/drupal/console/bin/drupal'" >> /home/root/.b
 wait-for-it --host=mysql-server --port=3306 --timeout=30
 ./vendor/drush/drush/drush -y si minimal --root=/var/www/web --db-url=mysql://root:secret@mysql-server/drupal --config-dir=/var/www/config --account-pass=admin
 ./vendor/drush/drush/drush -y cr
+chown -R root:www-data /var/www/web/sites
+chmod -R 775 /var/www/web/sites
 a2en rewrite
 apache2-foreground
