@@ -25,6 +25,5 @@ COPY ./drupal.sh /home/root
 RUN rm -rf /var/www/html
 RUN ln -s /var/www/web /var/www/html
 WORKDIR /
-EXPOSE 9003
 EXPOSE 80
 CMD ["apache2-foreground"]
