@@ -1,4 +1,5 @@
 #!/bin/bash
+a2enmod rewrite
 cd /var/www
 ln -s /var/www/web /var/www/html
 php -d memory_limit=-1 /usr/local/bin/composer install
@@ -11,5 +12,4 @@ wait-for-it --host=mysql-server --port=3306 --timeout=30
 ./vendor/drush/drush/drush -y cr
 chown -R root:www-data /var/www/web/sites
 chmod -R 775 /var/www/web/sites
-a2en rewrite
 apache2-foreground
