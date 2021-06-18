@@ -13,6 +13,11 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN pecl install redis-5.1.1 \
     && pecl install xdebug-3.0.4 \
     && docker-php-ext-enable redis xdebug
+RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+RUN echo "xdebug.mode=debug" >> /usr/local/etc/php/php.ini
+RUN echo "xdebug.client_host=172.17.0.1" >> /usr/local/etc/php/php.ini
+RUN echo "xdebug.client_port=9003" >> /usr/local/etc/php/php.ini
+RUN echo 'xdebug.idekey="netbeans-xdebug"' >> /usr/local/etc/php/php.ini
 RUN apt-get -y -qq install git default-mysql-client
 RUN apt-get install zip unzip
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
