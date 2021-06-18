@@ -2,6 +2,7 @@
 cd /var/www
 ln -s /var/www/web /var/www/html
 php -d memory_limit=-1 /usr/local/bin/composer install
+cp /var/www/web/sites/default.settings.php /var/www/web/sites/settings.php
 chown -R root:www-data /var/www/web/sites
 chmod -R 775 /var/www/web/sites
 echo "alias drush='/var/www/vendor/drush/drush/drush'" >> /home/root/.bashrc
