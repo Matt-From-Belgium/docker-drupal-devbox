@@ -25,8 +25,6 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 RUN export COMPOSER_MEMORY_LIMIT=-1
-COPY ./drupal-entrypoint.sh /home/root
-COPY ./drupal-install.sh /home/root
 RUN rm -rf /var/www/html
 RUN ln -s /var/www/web /var/www/html
 WORKDIR /
