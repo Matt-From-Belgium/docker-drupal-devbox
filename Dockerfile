@@ -26,4 +26,5 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN export COMPOSER_MEMORY_LIMIT=-1
 WORKDIR /
 EXPOSE 80
+EXPOSE 443
 CMD ["apache2-foreground"]
