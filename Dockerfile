@@ -27,4 +27,5 @@ RUN export COMPOSER_MEMORY_LIMIT=-1
 WORKDIR /
 EXPOSE 80
 EXPOSE 443
+RUN chmod -R 777 /tmp
 CMD ["apache2-foreground"]
